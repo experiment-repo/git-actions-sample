@@ -5,7 +5,7 @@ jobs:
   job1:
     runs-on : ubuntu-latest
     env:
-    ENVIRONMENT_NAME: ${{ secrets.ENVIRONMENT_NAME }}
+      ENVIRONMENT_NAME: ${{ secrets.ENVIRONMENT_NAME }}
     steps:
       - name: Display Environment
         run: echo $ENVIRONMENT_NAME
