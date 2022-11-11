@@ -4,7 +4,8 @@ on: workflow_dispatch
 jobs:
   job1:
     runs-on : ubuntu-latest
-    environment: production
+    environment: 
+      name: production
     steps:
       - name: Display Environment
         run: echo ${{ environment.ENVIRONMENT_NAME }}
