@@ -17,7 +17,7 @@ jobs:
     name: Generate environment
     runs-on: ubuntu-latest
     environment:
-      name: ${{inputs.environment_ref}}
+      name: production
     # Map the job outputs to step outputs
     outputs:
       environment_name: ${{ steps.assign_environment.outputs.environment_name  }}
