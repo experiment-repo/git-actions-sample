@@ -11,5 +11,5 @@ jobs:
     needs: job1
     steps:
       - name: Display Environment from reusable environment
-        run: echo ${{ needs.job1.outputs.environment_name }}
+        run: echo ${{ needs.job1.outputs.firstword }} ${{ needs.job1.outputs.secondword }}
         
