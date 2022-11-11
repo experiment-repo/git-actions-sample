@@ -1,28 +1,26 @@
-name: Reusable workflow for Environment variable setup
+name: Reusable workflow
 
 on:
   workflow_call:
-    inputs:
-      environment_ref:
-        required: true
-        type: string
     # Map the workflow outputs to job outputs
     outputs:
-      environment_name:
-        description: "Name of environment"
-        value: ${{ jobs.generate_environment.outputs.output1 }}
+      firstword:
+        description: "The first output string"
+        value: ${{ jobs.example_job.outputs.output1 }}
+      secondword:
+        description: "The second output string"
+        value: ${{ jobs.example_job.outputs.output2 }}
 
 jobs:
-  generate_environment:
-    name: Generate environment
+  example_job:
+    name: Generate output
     runs-on: ubuntu-latest
-    environment:
-      name: ${{inputs.environment_ref}}
     # Map the job outputs to step outputs
     outputs:
-      output1: ${{ steps.assign_environment.outputs.environment_name  }}
+      output1: ${{ steps.step1.outputs.firstword }}
+      output2: ${{ steps.step2.outputs.secondword }}
     steps:
-      - id: assign_environment
-        run: | 
-           echo "environment_name=hello" >> $GITHUB_OUTPUT
-           echo ${{ steps.assign_environment.outputs.environment_name  }}
+      - id: step1
+        run: echo "firstword=hello" >> $GITHUB_OUTPUT
+      - id: step2
+        run: echo "secondword=world" >> $GITHUB_OUTPUT
