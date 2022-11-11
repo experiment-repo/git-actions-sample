@@ -8,5 +8,5 @@ jobs:
       name: production
     steps:
       - name: Display Environment
-        run: echo ${{ environment.ENVIRONMENT_NAME }}
+        run: echo ${{ ENVIRONMENT_NAME }}
         
