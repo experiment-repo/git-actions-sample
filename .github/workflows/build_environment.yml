@@ -1,7 +1,5 @@
 name: Experiment environemt GIT actions
 on: workflow_dispatch
-env: 
-    name: production  
 jobs:
  job1:
     uses: experiment-repo/git-actions-sample/.github/workflows/reusable_workflow.yml@main
