@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Setup environment
         id: current_environment
-        uses: experiment-repo/myorg-actions/blob/main/.github/workflows/environmentsetup.yml@main
+        uses: experiment-repo/myorg-actions/.github/workflows/environmentsetup.yml@main
       - name: Display Environment
         run: echo ${{ secrets.ENVIRONMENT_NAME }}
       - name: Display Environment from reusable environment
