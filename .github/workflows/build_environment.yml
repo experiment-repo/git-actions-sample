@@ -4,7 +4,7 @@ env:
     name: production  
 jobs:
  job1:
-    uses: experiment-repo/myorg-actions/.github/workflows/environmentsetup.yml@main
+    uses: experiment-repo/git-actions-sample/.github/workflows/reusable_workflow.yml@main
     with:
         environment_ref: production
  job2:
