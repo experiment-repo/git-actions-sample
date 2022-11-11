@@ -1,17 +1,18 @@
 name: Experiment environemt GIT actions
 on: workflow_dispatch
-
+env: 
+    name: production  
 jobs:
-  job1:
+ job1:
+    uses: experiment-repo/myorg-actions/.github/workflows/environmentsetup.yml@main 
+ job2:
     runs-on : ubuntu-latest
+    needs: job1
     environment: 
       name: production    
     steps:
-      - name: Setup environment
-        id: current_environment
-        uses: experiment-repo/myorg-actions/.github/workflows/environmentsetup.yml@main
       - name: Display Environment
         run: echo ${{ secrets.ENVIRONMENT_NAME }}
       - name: Display Environment from reusable environment
-        run: ${{ steps.current_environment.environment_name }}
+        run: ${{ needs.job1.outputs.environment_name }}
         
