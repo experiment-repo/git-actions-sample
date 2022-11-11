@@ -10,7 +10,7 @@ on:
     outputs:
       environment_name:
         description: "Name of environment"
-        value: ${{ jobs.generate_environment.outputs.environment_name }}
+        value: ${{ jobs.generate_environment.outputs.output1 }}
 
 jobs:
   generate_environment:
@@ -20,7 +20,7 @@ jobs:
       name: ${{inputs.environment_ref}}
     # Map the job outputs to step outputs
     outputs:
-      environment_name: ${{ steps.assign_environment.outputs.environment_name  }}
+      output1: ${{ steps.assign_environment.outputs.environment_name  }}
     steps:
       - id: assign_environment
         run: | 
