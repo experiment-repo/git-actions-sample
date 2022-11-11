@@ -3,8 +3,6 @@ on: workflow_dispatch
 jobs:
  job1:
     uses: experiment-repo/git-actions-sample/.github/workflows/reusable_workflow.yml@main
-    with:
-        environment_ref: production
     secrets: inherit
  job2:
     runs-on : ubuntu-latest
