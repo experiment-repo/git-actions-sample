@@ -7,6 +7,11 @@ jobs:
     environment: 
       name: production    
     steps:
+      - name: Setup environment
+        id: current_environment
+        uses: experiment-repo/myorg-actions/blob/main/.github/workflows/environmentsetup.yml@main
       - name: Display Environment
         run: echo ${{ secrets.ENVIRONMENT_NAME }}
+      - name: Display Environment from reusable environment
+        run: ${{ steps.current_environment.environment_name }}
         
