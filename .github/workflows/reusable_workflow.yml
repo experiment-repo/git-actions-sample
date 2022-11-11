@@ -24,5 +24,5 @@ jobs:
     steps:
       - id: assign_environment
         run: | 
-           echo "::set-output name=environment_name::AAAAA"
+           echo "environment_name=hello" >> $GITHUB_OUTPUT
            echo ${{ steps.assign_environment.outputs.environment_name  }}
