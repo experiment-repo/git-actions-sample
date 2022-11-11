@@ -25,5 +25,5 @@ jobs:
       - id: assign_environment
         run: | 
            echo Name of ${{secrets.ENVIRONMENT_NAME}}
-           echo "::set-output environment_name =${{secrets.ENVIRONMENT_NAME}}"
+           echo "::set-output name=environment_name::${{secrets.ENVIRONMENT_NAME}}"
            echo ${{ steps.assign_environment.outputs.environment_name  }}
