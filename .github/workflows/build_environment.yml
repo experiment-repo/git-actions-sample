@@ -2,11 +2,12 @@ name: Experiment environemt GIT actions
 on: workflow_dispatch
 
 jobs:
-  env:
+  job1:
+    setup: 
+      runs-on : ubuntu-latest
+      env:
       ENVIRONMENT_NAME: ${{ secrets.ENVIRONMENT_NAME }}
-  setup: 
-    runs-on : ubuntu-latest
-    steps:
-       - name: Display Environment
-         run: echo $ENVIRONMENT_NAME
+      steps:
+        - name: Display Environment
+          run: echo $ENVIRONMENT_NAME
         
