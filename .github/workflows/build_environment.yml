@@ -7,7 +7,7 @@ jobs:
       runs-on : ubuntu-latest
       env:
       ENVIRONMENT_NAME: ${{ secrets.ENVIRONMENT_NAME }}
-      steps:
-        - name: Display Environment
-          run: echo $ENVIRONMENT_NAME
+    steps:
+      - name: Display Environment
+        run: echo $ENVIRONMENT_NAME
         
