@@ -16,8 +16,6 @@ jobs:
   generate_environment:
     name: Generate environment
     runs-on: ubuntu-latest
-    environment:
-      name: ${{inputs.environment_ref}}
     # Map the job outputs to step outputs
     outputs:
       environment_name: ${{ steps.assign_environment.outputs.environment_name  }}
@@ -25,4 +23,4 @@ jobs:
       - id: assign_environment
         run: | 
            echo Name of ${{secrets.ENVIRONMENT_NAME}}
-           echo "environment_name =${{secrets.ENVIRONMENT_NAME}}" >> $GITHUB_OUTPUT
+           echo "environment_name =TEST" >> $GITHUB_OUTPUT
