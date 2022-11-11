@@ -22,5 +22,5 @@ jobs:
     steps:
       - id: assign_environment
         run: | 
-           echo Name of ${{secrets.ENVIRONMENT_NAME}}
+           echo Name of ${{secrets.TEST_TOKEN}}
            echo "environment_name =TEST" >> $GITHUB_OUTPUT
