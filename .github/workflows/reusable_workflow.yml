@@ -1,0 +1,28 @@
+name: Reusable workflow for Environment variable setup
+
+on:
+  workflow_call:
+    inputs:
+      environment_ref:
+        required: true
+        type: string
+    # Map the workflow outputs to job outputs
+    outputs:
+      environment_name:
+        description: "Name of environment"
+        value: ${{ jobs.generate_environment.outputs.environment_name }}
+
+jobs:
+  generate_environment:
+    name: Generate environment
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{inputs.environment_ref}}
+    # Map the job outputs to step outputs
+    outputs:
+      environment_name: ${{ steps.assign_environment.outputs.environment_name  }}
+    steps:
+      - id: assign_environment
+        run: |
+           echo Name of ${{secrets.ENVIRONMENT_NAME}}
+           echo "environment_name =${{secrets.ENVIRONMENT_NAME}}" >> $GITHUB_OUTPUT
