@@ -8,5 +8,5 @@ jobs:
       ENVIRONMENT_NAME: ${{ secrets.ENVIRONMENT_NAME }}
     steps:
       - name: Display Environment
-        run: echo $ENVIRONMENT_NAME
+        run: echo ${{ env.ENVIRONMENT_NAME }}
         
