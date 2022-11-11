@@ -15,5 +15,5 @@ jobs:
       - name: Display Environment
         run: echo ${{ secrets.ENVIRONMENT_NAME }}
       - name: Display Environment from reusable environment
-        run: echo ${{ jobs.job1.outputs.environment_name }}
+        run: echo ${{ needs.job1.outputs.environment_name }}
         
