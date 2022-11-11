@@ -4,7 +4,9 @@ env:
     name: production  
 jobs:
  job1:
-    uses: experiment-repo/myorg-actions/.github/workflows/environmentsetup.yml@main 
+    uses: experiment-repo/myorg-actions/.github/workflows/environmentsetup.yml@main
+    with:
+        environment_ref: production
  job2:
     runs-on : ubuntu-latest
     needs: job1
