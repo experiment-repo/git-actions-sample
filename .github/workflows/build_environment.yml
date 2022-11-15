@@ -1,4 +1,4 @@
-name: Experiment environemt GIT actions
+name: Using the reusable workflows
 on: workflow_dispatch
 jobs:
  sayHi:
