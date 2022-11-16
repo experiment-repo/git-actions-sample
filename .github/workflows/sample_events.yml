@@ -19,7 +19,7 @@ jobs:
     steps:
       - run: |
           echo Got a PR request
-   handle_push:
+  handle_push:
     # This job only runs for push
     name: Push
     if: ${{ github.event_name == 'push' }}
@@ -27,7 +27,7 @@ jobs:
     steps:
       - run: |
           echo Push the changes
-   handle_issue:
+  handle_issue:
     # This job only runs when create issue
     name: Issue
     if: ${{ github.event_name == 'issues' }}
