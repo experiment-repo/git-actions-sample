@@ -16,7 +16,7 @@ jobs:
         with:
           branch_name: main
       - id: jsStep           
-        uses: experiment-repo/myorg-actions/greet-container@main
+        uses: experiment-repo/myorg-actions/greet-js@main
         with:
           branch_name: main 
       - name: Show executed action
