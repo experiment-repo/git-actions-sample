@@ -8,17 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: compositeStep
-      - name: Use Composite actions
         uses: experiment-repo/myorg-actions/greet-composite@main
         with:
           branch_name: main
       - id: containterStep          
-      - name: Use Container actions
         uses: experiment-repo/myorg-actions/greet-container@main
         with:
           branch_name: main
       - id: jsStep           
-      - name: Use JS actions
         uses: experiment-repo/myorg-actions/greet-container@main
         with:
           branch_name: main 
