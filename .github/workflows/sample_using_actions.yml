@@ -11,4 +11,9 @@ jobs:
         uses: experiment-repo/myorg-actions/greet-composite@main
         with:
           branch_name: main
+      - name: Use Composite actions
+        uses: experiment-repo/myorg-actions/greet-container@main
+        with:
+          branch_name: main
+
           
