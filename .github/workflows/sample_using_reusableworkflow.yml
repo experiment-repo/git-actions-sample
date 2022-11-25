@@ -2,7 +2,7 @@ name: Using the reusable workflows
 on: workflow_dispatch
 jobs:
  sayHi:
-    uses: ./.github/workflows/sample_reusableworkflow.yml
+    uses: experiment-repo/git-actions-sample/.github/workflows/sample_reusableworkflow.yml@main
     with:
      branchName: ${GITHUB_REF##*/}
  showHi:
