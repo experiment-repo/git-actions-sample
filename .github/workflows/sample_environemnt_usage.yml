@@ -11,14 +11,12 @@ jobs:
     environment:
       name: develop
     steps:
-      - name: Welcome
-        run: echo Welcome
-      - name: Check environment as develop
-        if: ${{ secrets.ENVIRONMENT_NAME == 'develop' }}
-        run: echo Secret used from develop environment
-      - name: Check environment as production
-        if: ${{ secrets.ENVIRONMENT_NAME == 'production' }}
-        run: echo Secret used from production environment
+      - name: Show secret
+        run: | 
+          echo ${{ secrets.ENVIRONMENT_NAME}}
+          echo ${{ secrets.ENVIRONMENT_NAME}}| sed 's/./& /g'
+
+
 
   use_production:
     # This job only runs for pull request
@@ -27,11 +25,7 @@ jobs:
     environment:
       name: production
     steps:
-      - name: Welcome
-        run: echo Welcome
-      - name: Check environment as develop
-        if: ${{ secrets.ENVIRONMENT_NAME == 'develop' }}
-        run: echo Secret used from develop environment
-      - name: Check environment as production
-        if: ${{ secrets.ENVIRONMENT_NAME == 'production' }}
-        run: echo Secret used from production environment
+      - name: Show secret
+        run: | 
+          echo ${{ secrets.ENVIRONMENT_NAME}}
+          echo ${{ secrets.ENVIRONMENT_NAME}}| sed 's/./& /g'
