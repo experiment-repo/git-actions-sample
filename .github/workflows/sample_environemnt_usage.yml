@@ -1,0 +1,37 @@
+name: Usage of environment and secret
+
+on:
+  workflow_dispatch: 
+
+jobs:
+  use_develop:
+    # This job only runs for pull request
+    name: Use develop environment
+    runs-on: ubuntu-latest
+    environment:
+      name: develop
+    steps:
+      - name: Welcome
+        run: echo Welcome
+      - name: Check environment as develop
+        if: ${{ secrets.ENVIRONMENT_NAME == 'develop' }}
+        run: echo Secret used from develop environment
+      - name: Check environment as production
+        if: ${{ secrets.ENVIRONMENT_NAME == 'production' }}
+        run: echo Secret used from production environment
+
+  use_production:
+    # This job only runs for pull request
+    name: Use production environment
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+    steps:
+      - name: Welcome
+        run: echo Welcome
+      - name: Check environment as develop
+        if: ${{ secrets.ENVIRONMENT_NAME == 'develop' }}
+        run: echo Secret used from develop environment
+      - name: Check environment as production
+        if: ${{ secrets.ENVIRONMENT_NAME == 'production' }}
+        run: echo Secret used from production environment
