@@ -26,9 +26,6 @@ jobs:
           gradle-version: 7.4.2
       - name: Build Gradle and Publish
         run: gradle build -PEXECUTION_ENV=develop
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            GITHUB_USER: ${{ secrets.USERNAME_FOR_GITHUB_PACKAGES }}
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v3
         with:
