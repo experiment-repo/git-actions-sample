@@ -79,3 +79,50 @@ eclipse {
         containers 'org.springsource.ide.eclipse.gradle.classpathcontainer'
     }
 }
+
+def getMavenSettingsLocalRepository = {
+    String localRepository
+    String m2Home = System.getenv("M2_HOME");
+    if (m2Home != null) {
+        m2Home += "/conf"
+    } else {
+        m2Home = System.getProperty( "user.home" ) + "/.m2"
+    }
+    File mavenSettings = new File(m2Home ?: userHome, "settings.xml")
+    if (mavenSettings.exists()) {
+        def xmlSlurper = new XmlSlurper()
+        def output = xmlSlurper.parse(mavenSettings)
+        localRepository = output.localRepository
+    }
+    return localRepository ?: System.getProperty( "user.home" ) + "/.m2/repository"
+}
+
+def executionEnv = (project.hasProperty('EXECUTION_ENV') == true) ? project.property("EXECUTION_ENV") : "local";
+// maven repository
+publishing {
+   publications {
+      javaLibrary(MavenPublication) {
+         version = executionEnv == "local" ? version : executionEnv+".release"
+         from project.components.java
+      }
+   }
+   repositories {
+      maven {
+        name = "GitHubPackages"
+        if (executionEnv!="local") {
+        url = project.findProperty("github_packages_registry_url")
+        credentials {
+           username = System.getenv("GITHUB_ACTOR")
+           password = System.getenv("GITHUB_TOKEN")
+        }
+        }
+        else{
+        def localRepository = getMavenSettingsLocalRepository()
+                url = "file:${localRepository}"
+        }
+      }
+   }
+}
+
+
+publish.dependsOn build
